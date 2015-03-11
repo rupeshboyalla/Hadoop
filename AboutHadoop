@@ -1,1 +1,15 @@
 Hadoop:-  Modern Data Operating System
+
+
+Schema on write (RDBMD)                                             Schema on read(Hadoop)
+- Schema must be created before any data can be                - Data is simply caopied to the file store, no transformation 
+loaded                                                            is needed   
+
+- An Explicit load operation has to take place which             - A SerDe (Serializer/Deserlizer) is applied during read time to 
+transforms data to DB intrenal structure.                           extract the required columns(Late binding)
+
+- New columns must be added explicitly before new data            - New data can start flowing any time and will appear retroactively 
+for such columns can be loaded into the databases.                  once the SerDe is updated to parse it.
+
+* Read is fats                                                      * load is fast   
+* Standards/Galernance                                              * Flexibility/Agility
